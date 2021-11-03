@@ -20,6 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sensor.cpp" />
+    <ClCompile Include="SensorInfo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sensor.h" />
+    <ClInclude Include="SensorInfo.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
