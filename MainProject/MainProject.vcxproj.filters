@@ -21,12 +21,18 @@
     <ClCompile Include="SensorInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="simInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SensorInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
