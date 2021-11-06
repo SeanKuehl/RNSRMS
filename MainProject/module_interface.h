@@ -10,11 +10,11 @@ public:
 
 	module_interface();
 
-	virtual SimInfo getSim();
+	virtual SimInfo getSim() = 0;
 
-	virtual SensorInfo getSensorInfo();
+	virtual SensorInfo getSensorInfo() = 0;
 
-	virtual void ChangeValue(string, string);
+	virtual void ChangeValue(string, string) = 0;
 
 };
 
