@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="module_interface.cpp" />
     <ClCompile Include="sensor.cpp" />
     <ClCompile Include="SensorInfo.cpp" />
     <ClCompile Include="simInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="module_interface.h" />
     <ClInclude Include="sensor.h" />
     <ClInclude Include="SensorInfo.h" />
     <ClInclude Include="simInfo.h" />
