@@ -27,6 +27,15 @@
     <ClCompile Include="module_interface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MemoryModule\Memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryModule\TempSim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryModule\tempmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SensorInfo.h">
@@ -41,5 +50,15 @@
     <ClInclude Include="module_interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MemoryModule\Memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryModule\TempSim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="MemoryModule\MemoryFluctuatingValue.txt" />
+    <Text Include="MemoryModule\MemorySensors.txt" />
   </ItemGroup>
 </Project>
