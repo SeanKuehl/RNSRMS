@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <cctype>
+#include <string>
 
 using namespace std;
 class Sensor {
@@ -14,11 +17,7 @@ public:
 		int i = 0;
 		char c;
 
-		while (names[i])
-		{
-			c = names[i];
-			putchar(tolower(c));
-		}
+		transform(names.begin(), names.end(), names.begin(), [](unsigned char c) { return tolower(c); });
 
 		for (unsigned int i = 0; i < value.size(); i++) {
 			string temp = value[i];
