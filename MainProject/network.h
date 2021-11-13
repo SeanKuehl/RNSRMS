@@ -1,10 +1,10 @@
 #pragma once
 
 #include "module_interface.h"
-#include <iostream>;
-#include <string>;
-#include <vector>;
-#include <fstream>;
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
 
 class Network : public module_interface
 {

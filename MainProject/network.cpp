@@ -147,7 +147,7 @@ SimInfo Network::getSim()
 	vector<string> conclusion;
 	conclusion.push_back("--------------");
 
-
+	return mySim;
 }
 
 SensorInfo Network::getSensorInfo() 
@@ -155,14 +155,25 @@ SensorInfo Network::getSensorInfo()
 	return mySensors;
 }
 
-void Network::ChangeValue(string name, string value)
+void Network::ChangeValue(string name, string value)	//i know that the 'value' has to be valid because of validation
 {
 	if (name == "bandwidth") {
 		 currentMaxBand= stoi(value);
 	}
-	else if (name == )
-	{
-
+	else if (name == "CPU") {
+		CPU = value;
+	}
+	else if (name == "switches") {
+		switches = value;
+	}
+	else if (name == "router") {
+		router = value;
+	}
+	else if (name == "fans") {
+		fans = value;
+	}
+	else if (name == "RAM") {
+		RAM = value;
 	}
 }
 
