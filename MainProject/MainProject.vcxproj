@@ -24,6 +24,7 @@
     <ClCompile Include="sensor.cpp" />
     <ClCompile Include="SensorInfo.cpp" />
     <ClCompile Include="simInfo.cpp" />
+    <ClCompile Include="tempMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="module_interface.h" />
