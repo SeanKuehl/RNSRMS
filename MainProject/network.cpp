@@ -1,10 +1,201 @@
 #include "network.h";
+#include <stdlib.h>
+#include <time.h>
 
-void Network::GetSensorsAndSensorInformationFromFile(string fileName) {
+#define SENSOR_FILE	 "NetworkSensors.txt"
+
+//Initialize Network class
+Network::Network()
+{
+	GetSensorInfoFromFile(SENSOR_FILE);
+}
+
+SimInfo Network::getSim()
+{
+	string tempString = "";
+
+	vector<string> head;
+	head.push_back("----Network----");
+	head.push_back("\n");
+
+	vector<string> body;
+	body.push_back("Max Bandwidth: " + to_string(currentMaxBand) + " Mbps");
+	body.push_back("\n");
+
+	for (int i = 0; i < sectionName.size(); i++)
+	{
+		tempString += sectionName.at(i) + ": ";
+
+		for (int j = 0; j < deviceName.size(); j++)
+		{
+			tempString += deviceName.at(j) + ": ";
+
+			for (int k = 0; k < deviceConnection.at(j).size(); k++)
+			{
+				if (sectionName.at(j) == "CPU")
+				{
+					if (deviceConnection.at(j).at(k) == CPU) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+
+				if (sectionName.at(j) == "switches")
+				{
+					if (deviceConnection.at(j).at(k) == switches) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+
+				if (sectionName.at(j) == "router")
+				{
+					if (deviceConnection.at(j).at(k) == router) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+
+				if (sectionName.at(j) == "fans")
+				{
+					if (deviceConnection.at(j).at(k) == fans) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+
+				if (sectionName.at(j) == "RAM")
+				{
+					if (deviceConnection.at(j).at(k) == RAM) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+
+				if (sectionName.at(j) == "laptop1")
+				{
+					if (deviceConnection.at(j).at(k) == connectionType) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+				if (sectionName.at(j) == "laptop2")
+				{
+					if (deviceConnection.at(j).at(k) == connectionType) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+				if (sectionName.at(j) == "PC1")
+				{
+					if (deviceConnection.at(j).at(k) == connectionType) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+				if (sectionName.at(j) == "PC2")
+				{
+					if (deviceConnection.at(j).at(k) == connectionType) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+				if (sectionName.at(j) == "AdminPC")
+				{
+					if (deviceConnection.at(j).at(k) == connectionType) {
+						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
+					}
+					else {
+						tempString += deviceConnection.at(j).at(k) + " ";
+					}
+
+				}
+			}
+			body.push_back(tempString);
+			body.push_back("\n");
+			tempString = "";
+		}
+	}
+
+	vector<string> conclusion;
+	conclusion.push_back("--------------");
+
+
+}
+
+SensorInfo Network::getSensorInfo() 
+{
+	return mySensors;
+}
+
+void Network::ChangeValue(string name, string value)
+{
+	if (name == "bandwidth") {
+		 currentMaxBand= stoi(value);
+	}
+	else if (name == )
+	{
+
+	}
+}
+
+//Calculate the current network speed
+void Network::calcCurrentSpeed()	//no input needed since values are 
+{
+	/*
+	Note:
+	average WIFI speed = 12 - 25 Mbps
+	average ethernet speed = 45 - 100 MBps
+	*/
+	double tempSpeed = currentSpeed;
+
+	srand(time(0));
+
+	if (connectionType == "WIFI")
+	{
+		tempSpeed = rand() % 13 + 12;	//gives range from 12-24
+	}
+	else if (connectionType == "ethernet")
+	{
+		tempSpeed = rand() % 440 + 360;	//gives range from 360-799
+	}
+
+	currentSpeed = tempSpeed;
+}
+
+void Network::GetSensorInfoFromFile(string fileName) {
 	// Create a text string, which is used to output the text file
 	string myText;
 
-	bool nameNotValue = true;
+	bool isSectionName = true;
+	bool isDeviceName = false;
 	vector<string> tempValues;
 
 	// Read from the text file
@@ -15,20 +206,25 @@ void Network::GetSensorsAndSensorInformationFromFile(string fileName) {
 		// Output the text from the file
 
 		if (myText == "x") {
-			nameNotValue = true;
-			sensorValues.push_back(tempValues);
+			isSectionName = true;
+			isDeviceName = false;
+			deviceConnection.push_back(tempValues);
 			tempValues = {};
-			//skip this one, last one ended
+			//end of section
 		}
-
-		else if (nameNotValue) {
-			sensorNames.push_back(myText);
-			nameNotValue = false;
+		else if (isSectionName) {
+			sectionName.push_back(myText);
+			isSectionName = false;
+			isDeviceName = true;
 		}
-		else if (nameNotValue == false) {
+		else if (isDeviceName) {
+			deviceName.push_back(myText);
+			isDeviceName = false;
+		}
+		else if (isSectionName == false && isDeviceName == false)
+		{
 			tempValues.push_back(myText);
 		}
-
 	}
 
 	// Close the file

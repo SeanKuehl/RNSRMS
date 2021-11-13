@@ -1,0 +1,34 @@
+Connections(inner):
+CPU
+connected
+not connected
+switches
+connected
+not connected
+router
+connected
+not connected
+fans
+connected
+not connected
+RAM
+connected
+not connected
+x
+Connections(outer):
+laptop1
+WIFI
+ethernet
+laptop2
+WIFI
+ethernet
+PC1
+WIFI
+ethernet
+PC2
+WIFI
+ethernet
+AdminPC
+WIFI
+ethernet
+x
