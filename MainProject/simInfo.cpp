@@ -3,9 +3,11 @@
 
 using namespace std;
 
-SimInfo::SimInfo() {
+SimInfo::SimInfo(vector<string> NewHead, vector<string> NewBody, vector<string> NewConclusion) {
 
-	//initialize
+	SimInfo::Head = NewHead;
+	SimInfo::Body = NewBody;
+	SimInfo::Conclusion = NewConclusion;
 
 }
 
