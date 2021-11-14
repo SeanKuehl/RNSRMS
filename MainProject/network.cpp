@@ -175,6 +175,22 @@ void Network::ChangeValue(string name, string value)	//i know that the 'value' h
 	else if (name == "RAM") {
 		RAM = value;
 	}
+	else if (name == "laptop1") {
+		RAM = value;
+	}
+	else if (name == "laptop2") {
+		RAM = value;
+	}
+	else if (name == "PC1") {
+		RAM = value;
+	}
+	else if (name == "PC2") {
+		RAM = value;
+	}
+	else if (name == "AdminPC") {
+		RAM = value;
+	}
+
 }
 
 //Calculate the current network speed
