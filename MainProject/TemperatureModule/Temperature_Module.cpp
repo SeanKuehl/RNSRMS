@@ -12,10 +12,12 @@ using namespace std;
 Temperature::Temperature()
 {
 	Temperature_Value_Range = ReadFile(TEMPERATURE_FLUC_FILE);
-	Workload_Value_Range = ReadFile(AirFlow_FILE);
-	AirFlow_Value_Range = ReadFile(WORKLOAD_FILE);
+	Workload_Value_Range = ReadFile(WORKLOAD_FILE);
+	AirFlow_Value_Range = ReadFile(AirFlow_FILE);
 
 	Temperature_Value_Index = 0;
+	Auto = true;
+
 
 	Calculate();
 }
@@ -25,18 +27,22 @@ SimInfo Temperature::getSim() {
 	vector<string> Head;
 	vector<string> Body;
 	vector<string> Conclusion;
-
-	Head.push_back("################ Temperature ################");
-
+	Head.push_back("\n");
+	Head.push_back("--------------- Temperature ---------------");
+	Head.push_back("\n");
 	Calculate();
 	Body.push_back("Temperature: " + to_string(Temperature_Value) + "°C");
 	Body.push_back("\n");
 
 	Body.push_back("WorkLoad: " + to_string(WorkLoad_Value) + "%");
+	Body.push_back("\n");
 	Body.push_back("AirFlow: " + to_string(AirFlow_Value) + "CFM");
+	Body.push_back("\n");
 	Body.push_back("Fan Speed: " + to_string(FanSpeed) + "%");
+	Body.push_back("\n");
 
-	Conclusion.push_back("################ Temperature ################");
+	Conclusion.push_back("--------------- Temperature ---------------");
+	Conclusion.push_back("\n");
 
 	TempSim = SimInfo(Head, Body, Conclusion);
 
@@ -57,8 +63,8 @@ void Temperature::AutoAdjust() {
 
 	if (Temperature_Value >= TempMaxThreshold) {
 
-		double Temp = Temperature_Value - TempMaxThreshold;
-		FanSpeed += Temp;
+		float Temp = Temperature_Value - TempMaxThreshold;
+		FanSpeed += Temp*10;
 
 		if (FanSpeed > 100) {
 
@@ -69,10 +75,10 @@ void Temperature::AutoAdjust() {
 
 // Detects the current Base Temperature before calculating the additional Enviromental Factors
 void Temperature::TemperatureSensor() {
-	if ((rand() % 100) == 99) {
+	//if ((rand() % 100) == 99) {
 
 		Temperature_Value_Index += 1;
-	}
+	//}
 
 	if (Temperature_Value_Index > 9) {
 
@@ -125,25 +131,25 @@ vector<string> Temperature::ReadFile(string FileName) {
 
 void Temperature::WorkLoadSensor() {
 
-	if ((rand() % 100) == 99) {
+	//if ((rand() % 100) == 99) {
 
-		WorkLoad_Value = stoi(Workload_Value_Range.at(rand() % 10));
-	}
+	WorkLoad_Value = stoi(Workload_Value_Range.at((rand() % 10)));
+	//}
 }
 
 void Temperature::AirFlowSensor() {
 
-	if ((rand() % 100) == 99) {
+	//if ((rand() % 100) == 99) {
 
 		AirFlow_Value = stoi(AirFlow_Value_Range.at(rand() % 10));
-	}
+	//}
 }
 
-void Temperature::ChangeSpeed(double Speed) {
+void Temperature::ChangeSpeed(int Speed) {
 
 	FanSpeed = Speed;
 }
 
-void Temperature::ManualAdjust(double Speed) {
+void Temperature::ManualAdjust(int Speed) {
 	// Integration with the Main Module Needed for this
 }

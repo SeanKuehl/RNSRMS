@@ -12,10 +12,10 @@ using namespace std;
 class Temperature : public module_interface {
 
 private:
-	double Temperature_Value;
-	double AirFlow_Value;
-	double WorkLoad_Value;
-	double FanSpeed;
+	float Temperature_Value;
+	float AirFlow_Value;
+	int WorkLoad_Value;
+	int FanSpeed;
 
 	int Temperature_Value_Index;
 
@@ -31,10 +31,10 @@ private:
 	vector<string> AirFlow_Value_Range;
 	vector<string> Workload_Value_Range;
 
-	const double TempMaxThreshold = 28;
-	const double TempMinThreshold = 10;
-	const double TempMaxExpectedMax = 21;
-	const double TempMinExpectedMin = 20;
+	const float TempMaxThreshold = 24;
+	const float TempMinThreshold = 16;
+	const float TempMaxExpectedMax = 21;
+	const float TempMinExpectedMin = 20;
 
 public:
 
@@ -58,9 +58,9 @@ public:
 
 	void AirFlowSensor();
 
-	void ChangeSpeed(double Speed);
+	void ChangeSpeed(int Speed);
 
-	void ManualAdjust(double Speed);
+	void ManualAdjust(int Speed);
 };
 
 
