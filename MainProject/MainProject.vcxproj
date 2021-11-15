@@ -23,19 +23,18 @@
     <ClCompile Include="HumidityModule\mainTesting.cpp" />
     <ClCompile Include="MainModule\main.cpp" />
     <ClCompile Include="module_interface.cpp" />
-    <ClCompile Include="network.cpp" />
+    <ClCompile Include="NetworkModule\network.cpp" />
+    <ClCompile Include="NetworkModule\tempMain.cpp" />
     <ClCompile Include="sensor.cpp" />
     <ClCompile Include="SensorInfo.cpp" />
     <ClCompile Include="simInfo.cpp" />
-
     <ClCompile Include="TemperatureModule\Temperature_Module.cpp" />
     <ClCompile Include="TemperatureModule\TempMain.cpp" />
-
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HumidityModule\humidityModule.h" />
     <ClInclude Include="module_interface.h" />
-    <ClInclude Include="network.h" />
+    <ClInclude Include="NetworkModule\network.h" />
     <ClInclude Include="sensor.h" />
     <ClInclude Include="SensorInfo.h" />
     <ClInclude Include="simInfo.h" />
@@ -44,6 +43,7 @@
   <ItemGroup>
     <Text Include="HumidityModule\humidityFluctuatingValue.txt" />
     <Text Include="HumidityModule\humiditySensors.txt" />
+    <Text Include="NetworkModule\NetworkSensors.txt" />
     <Text Include="TemperatureModule\AirFlow.txt" />
     <Text Include="TemperatureModule\Temperature.txt" />
     <Text Include="TemperatureModule\WorkLoad.txt" />
@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;$(SolutionDIr)MainProject\NetworkModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;$(SolutionDIr)MainProject\NetworkModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,9 +148,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-
-      <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-
+      <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;$(SolutionDIr)MainProject\NetworkModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,7 +165,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;$(SolutionDIr)MainProject\NetworkModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

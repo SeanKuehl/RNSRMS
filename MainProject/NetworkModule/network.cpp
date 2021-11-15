@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SENSOR_FILE	 "NetworkSensors.txt"
+#define SENSOR_FILE	 "NetworkModule/NetworkSensors.txt"
 
 //Initialize Network class
 Network::Network()
