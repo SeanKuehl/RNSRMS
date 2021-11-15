@@ -3,8 +3,10 @@ fanSpeed
 245.1
 168.7
 175.8
-~
+x
 humidity
 56.2
+x
 pressure
 14.7
+x

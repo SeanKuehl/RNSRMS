@@ -1,4 +1,5 @@
 #include "humidityModule.h"
+#include <fstream>
 
 #define FLUCT_VAL_FILE "HumidityModule/humidityFluctuatingValue.txt"
 #define SENSOR_FILE "HumidityModule/humiditySensors.txt"
@@ -77,8 +78,8 @@ SimInfo Humidity::getSim() {
 	conclusion.push_back("--------------");
 
 
-	TempSim newSim = TempSim(head, body, conclusion);
-	newSim.PrintSim();
+	Sim = SimInfo(head, body, conclusion);
+	Sim.PrintSim();
 
 	int maxNumOfValues = 10;
 	fluctuatingValueIndex += 1;
@@ -103,10 +104,10 @@ void Humidity::ChangeValue(string sensorName, string sensorValue) {
 		fanSpeed = stoi(sensorValue);
 	}
 	else if (sensorName == "humidity") {
-		allocation = stoi(sensorValue);
+		humidity = stoi(sensorValue);
 	}
 	else if (sensorName == "pressure") {
-		threads = stoi(sensorValue);
+		pressure = stoi(sensorValue);
 	}
 }
 
@@ -160,6 +161,7 @@ void Humidity::getSensorInformation(string fileName) {
 
 	bool nameNotValue = true;
 	vector<string> tempValues;
+	string myText;
 
 
 	ifstream MyReadFile(fileName);

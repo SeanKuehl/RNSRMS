@@ -3,6 +3,7 @@
 #include <string>
 #include "SensorInfo.h"
 #include "simInfo.h"
+#include "humidityModule.h"
 
 using namespace std;
 
@@ -11,13 +12,14 @@ void MainMenu();
 void HandleUserInput();
 
 //instance objects of all modules here
+Humidity humidityModule = Humidity();
 
 int main(void) {
 
 	
 	vector<SensorInfo> sensorInformation;
 	//add the sensor info from all the modules to the list
-
+	sensorInformation.push_back(humidityModule.getSensorInfo());
 
 
 
@@ -34,6 +36,8 @@ void MainMenu() {
 		cout << "Welcome to RNSRMS, enter a command, 'exit' or 'sim." << endl;
 
 		//call each module's getsim and call it's printsim
+		SimInfo humSim = humidityModule.getSim();
+		humSim.PrintSim();
 
 		//call handle user input
 
@@ -92,6 +96,11 @@ void HandleUserInput() {
 		}
 
 		//call the verifyInput's of each object in the sensorInfo list
+
+		if (humidityModule.getSensorInfo().VerifyInput(sensorName, sensorValue)) {
+			//it's valid, modify it
+			humidityModule.ChangeValue(sensorName, sensorValue);
+		}
 
 		//call change value of correct module if valid, otherwise
 

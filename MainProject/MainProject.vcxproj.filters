@@ -30,6 +30,12 @@
     <ClCompile Include="MainModule\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HumidityModule\humidityModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HumidityModule\mainTesting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SensorInfo.h">
@@ -44,5 +50,12 @@
     <ClInclude Include="module_interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HumidityModule\humidityModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="HumidityModule\humidityFluctuatingValue.txt" />
+    <Text Include="HumidityModule\humiditySensors.txt" />
   </ItemGroup>
 </Project>

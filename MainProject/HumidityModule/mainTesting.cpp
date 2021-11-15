@@ -2,9 +2,9 @@
 
 #include "humidityModule.h"
 
-int main(void) {
-	humidity newModule = humidity();
-
-	newModule.getSim();
-
-}
+//int main(void) {
+//	humidity newModule = humidity();
+//
+//	newModule.getSim();
+//
+//}
