@@ -23,12 +23,15 @@
     <ClCompile Include="sensor.cpp" />
     <ClCompile Include="SensorInfo.cpp" />
     <ClCompile Include="simInfo.cpp" />
+    <ClCompile Include="Temperature_Module.cpp" />
+    <ClCompile Include="TempMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="module_interface.h" />
     <ClInclude Include="sensor.h" />
     <ClInclude Include="SensorInfo.h" />
     <ClInclude Include="simInfo.h" />
+    <ClInclude Include="Temperature_Module.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
