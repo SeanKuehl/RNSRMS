@@ -2,9 +2,9 @@
 
 #include "Memory.h"
 
-int main(void) {
-	Memory newModule = Memory();
-
-	newModule.getSim();
-
-}
+//int main(void) {
+//	Memory newModule = Memory();
+//
+//	newModule.getSim();
+//
+//}

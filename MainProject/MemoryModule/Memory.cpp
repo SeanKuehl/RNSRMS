@@ -10,10 +10,10 @@ Memory::Memory() {
 	GetSensorsAndSensorInformationFromFile(SENSOR_FILE);
 
 	//sensors currently has error in it at the moment
-	//mySensors.AddSensor(Sensor(sensorNames.at(0), sensorValues.at(0)));
-	//mySensors.AddSensor(Sensor(sensorNames.at(1), sensorValues.at(1)));
-	//mySensors.AddSensor(Sensor(sensorNames.at(2), sensorValues.at(2)));
-	//mySensors.AddSensor(Sensor(sensorNames.at(3), sensorValues.at(3)));
+	mySensors.AddSensor(Sensor(sensorNames.at(0), sensorValues.at(0)));
+	mySensors.AddSensor(Sensor(sensorNames.at(1), sensorValues.at(1)));
+	mySensors.AddSensor(Sensor(sensorNames.at(2), sensorValues.at(2)));
+	mySensors.AddSensor(Sensor(sensorNames.at(3), sensorValues.at(3)));
 
 
 }
@@ -92,9 +92,9 @@ SimInfo Memory::getSim() {
 	vector<string> conclusion;
 	conclusion.push_back("--------------");
 
-	//this is only for testing
-	TempSim newSim = TempSim(head, body, conclusion);
-	newSim.PrintSim();
+	
+	mySim = SimInfo(head, body, conclusion);
+	mySim.PrintSim();
 
 	//increment the fluctuating value index for next time
 	int maxNumOfValues = 10;

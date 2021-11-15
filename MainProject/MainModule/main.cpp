@@ -7,6 +7,7 @@
 #include "humidityModule.h"
 #include "Temperature_Module.h"
 #include "network.h"
+#include "Memory.h"
 
 using namespace std;
 
@@ -15,6 +16,7 @@ void MainMenu();
 void HandleUserInput();
 
 //instance objects of all modules here
+Memory memoryModule = Memory();
 Network networkModule = Network();
 Humidity humidityModule = Humidity();
 Temperature temperatureModule = Temperature();
@@ -28,7 +30,7 @@ int main(void) {
 	sensorInformation.push_back(humidityModule.getSensorInfo());
 	sensorInformation.push_back(temperatureModule.getSensorInfo());
 	sensorInformation.push_back(networkModule.getSensorInfo());
-
+	sensorInformation.push_back(memoryModule.getSensorInfo());
 
 
 }
@@ -51,6 +53,9 @@ void MainMenu() {
 
 		SimInfo netSim = networkModule.getSim();
 		netSim.PrintSim();
+
+		SimInfo memSim = memoryModule.getSim();
+		memSim.PrintSim();
 
 		//call handle user input
 
@@ -119,6 +124,9 @@ void HandleUserInput() {
 		}
 		else if (networkModule.getSensorInfo().VerifyInput(sensorName, sensorValue)) {
 			networkModule.ChangeValue(sensorName, sensorValue);
+		}
+		else if (memoryModule.getSensorInfo().VerifyInput(sensorName, sensorValue)) {
+			memoryModule.ChangeValue(sensorName, sensorValue);
 		}
 
 		//call change value of correct module if valid, otherwise
