@@ -1,0 +1,10 @@
+fanSpeed
+122.3
+245.1
+168.7
+175.8
+~
+humidity
+56.2
+pressure
+14.7
