@@ -26,6 +26,8 @@
     <ClCompile Include="sensor.cpp" />
     <ClCompile Include="SensorInfo.cpp" />
     <ClCompile Include="simInfo.cpp" />
+    <ClCompile Include="Temperature_Module.cpp" />
+    <ClCompile Include="TempMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HumidityModule\humidityModule.h" />
@@ -33,6 +35,7 @@
     <ClInclude Include="sensor.h" />
     <ClInclude Include="SensorInfo.h" />
     <ClInclude Include="simInfo.h" />
+    <ClInclude Include="Temperature_Module.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="HumidityModule\humidityFluctuatingValue.txt" />
