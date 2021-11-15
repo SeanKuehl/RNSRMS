@@ -23,15 +23,19 @@
     <ClCompile Include="HumidityModule\mainTesting.cpp" />
     <ClCompile Include="MainModule\main.cpp" />
     <ClCompile Include="module_interface.cpp" />
+    <ClCompile Include="network.cpp" />
     <ClCompile Include="sensor.cpp" />
     <ClCompile Include="SensorInfo.cpp" />
     <ClCompile Include="simInfo.cpp" />
+
     <ClCompile Include="TemperatureModule\Temperature_Module.cpp" />
     <ClCompile Include="TemperatureModule\TempMain.cpp" />
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HumidityModule\humidityModule.h" />
     <ClInclude Include="module_interface.h" />
+    <ClInclude Include="network.h" />
     <ClInclude Include="sensor.h" />
     <ClInclude Include="SensorInfo.h" />
     <ClInclude Include="simInfo.h" />
@@ -144,11 +148,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+
       <AdditionalIncludeDirectories>$(SolutionDir)MainProject;$(SolutionDir)MainProject\HumidityModule;$(SolutionDir)MainProject\TemperatureModule;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
