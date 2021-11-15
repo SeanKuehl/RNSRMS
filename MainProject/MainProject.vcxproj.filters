@@ -27,13 +27,27 @@
     <ClCompile Include="module_interface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryModule\Memory.cpp">
+
+    <ClCompile Include="MainModule\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryModule\TempSim.cpp">
+    <ClCompile Include="HumidityModule\humidityModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryModule\tempmain.cpp">
+    <ClCompile Include="HumidityModule\mainTesting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemperatureModule\Temperature_Module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemperatureModule\TempMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkModule\network.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkModule\tempMain.cpp">
+
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,15 +64,26 @@
     <ClInclude Include="module_interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryModule\Memory.h">
+
+    <ClInclude Include="HumidityModule\humidityModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryModule\TempSim.h">
+    <ClInclude Include="TemperatureModule\Temperature_Module.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkModule\network.h">
+
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="MemoryModule\MemoryFluctuatingValue.txt" />
-    <Text Include="MemoryModule\MemorySensors.txt" />
+
+    <Text Include="HumidityModule\humidityFluctuatingValue.txt" />
+    <Text Include="HumidityModule\humiditySensors.txt" />
+    <Text Include="TemperatureModule\AirFlow.txt" />
+    <Text Include="TemperatureModule\Temperature.txt" />
+    <Text Include="TemperatureModule\WorkLoad.txt" />
+    <Text Include="NetworkModule\NetworkSensors.txt" />
+
   </ItemGroup>
 </Project>

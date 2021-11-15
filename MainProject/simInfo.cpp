@@ -5,7 +5,13 @@ using namespace std;
 
 SimInfo::SimInfo() {
 
-	//initialize
+}
+
+SimInfo::SimInfo(vector<string> NewHead, vector<string> NewBody, vector<string> NewConclusion) {
+
+	SimInfo::Head = NewHead;
+	SimInfo::Body = NewBody;
+	SimInfo::Conclusion = NewConclusion;
 
 }
 

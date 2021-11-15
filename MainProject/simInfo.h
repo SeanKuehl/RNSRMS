@@ -20,6 +20,8 @@ public:
 
 	SimInfo();
 
+	SimInfo(vector<string>, vector<string>, vector<string>);
+
 	void PrintSim();
 
 };

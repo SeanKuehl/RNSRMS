@@ -1,6 +1,6 @@
 #pragma once
-#include "SensorInfo.h";
-#include "simInfo.h";
+#include "SensorInfo.h"
+#include "simInfo.h"
 
 using namespace std;
 
