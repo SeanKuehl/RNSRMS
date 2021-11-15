@@ -3,6 +3,10 @@
 
 using namespace std;
 
+SimInfo::SimInfo() {
+
+}
+
 SimInfo::SimInfo(vector<string> NewHead, vector<string> NewBody, vector<string> NewConclusion) {
 
 	SimInfo::Head = NewHead;
