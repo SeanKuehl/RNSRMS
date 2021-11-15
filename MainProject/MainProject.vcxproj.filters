@@ -27,10 +27,21 @@
     <ClCompile Include="module_interface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="network.cpp">
+
+    <ClCompile Include="MainModule\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tempMain.cpp">
+    <ClCompile Include="HumidityModule\humidityModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HumidityModule\mainTesting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemperatureModule\Temperature_Module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemperatureModule\TempMain.cpp">
+
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,8 +58,20 @@
     <ClInclude Include="module_interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="network.h">
+
+    <ClInclude Include="HumidityModule\humidityModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TemperatureModule\Temperature_Module.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="HumidityModule\humidityFluctuatingValue.txt" />
+    <Text Include="HumidityModule\humiditySensors.txt" />
+    <Text Include="TemperatureModule\AirFlow.txt" />
+    <Text Include="TemperatureModule\Temperature.txt" />
+    <Text Include="TemperatureModule\WorkLoad.txt" />
+
   </ItemGroup>
 </Project>
