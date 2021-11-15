@@ -29,6 +29,10 @@ public:
 
 			value[i] = temp;
 		}
+
+		name = names;
+		values = value;
+
 	}
 
 	string getName() {
