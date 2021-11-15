@@ -32,6 +32,7 @@ int main(void) {
 	sensorInformation.push_back(networkModule.getSensorInfo());
 	sensorInformation.push_back(memoryModule.getSensorInfo());
 
+	MainMenu();
 
 }
 
@@ -57,7 +58,10 @@ void MainMenu() {
 		SimInfo memSim = memoryModule.getSim();
 		memSim.PrintSim();
 
+		
+
 		//call handle user input
+		HandleUserInput();
 
 
 	}
@@ -88,7 +92,7 @@ void HandleUserInput() {
 	}
 	else {
 		//its just a regular command
-
+		temp += " ";	//add a space onto the end so it detects value
 		for (int i = 0; i < temp.size(); i++) {
 			if (temp.at(i) != ' ') {
 				collector += temp.at(i);
@@ -127,6 +131,9 @@ void HandleUserInput() {
 		}
 		else if (memoryModule.getSensorInfo().VerifyInput(sensorName, sensorValue)) {
 			memoryModule.ChangeValue(sensorName, sensorValue);
+		}
+		else {
+			cout << "Invalid Command" << endl;
 		}
 
 		//call change value of correct module if valid, otherwise

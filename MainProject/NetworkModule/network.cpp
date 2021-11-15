@@ -147,6 +147,8 @@ SimInfo Network::getSim()
 	vector<string> conclusion;
 	conclusion.push_back("--------------");
 
+	mySim = SimInfo(head, body, conclusion);
+
 	return mySim;
 }
 

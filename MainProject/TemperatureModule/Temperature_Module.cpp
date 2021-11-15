@@ -38,6 +38,8 @@ SimInfo Temperature::getSim() {
 
 	Conclusion.push_back("################ Temperature ################");
 
+	TempSim = SimInfo(Head, Body, Conclusion);
+
 	return TempSim;
 }
 

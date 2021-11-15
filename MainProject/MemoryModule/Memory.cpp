@@ -94,7 +94,7 @@ SimInfo Memory::getSim() {
 
 	
 	mySim = SimInfo(head, body, conclusion);
-	mySim.PrintSim();
+	//mySim.PrintSim();
 
 	//increment the fluctuating value index for next time
 	int maxNumOfValues = 10;

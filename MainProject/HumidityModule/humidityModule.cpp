@@ -14,8 +14,9 @@ Humidity::Humidity() {
 	Sensors.AddSensor(Sensor(sensorNames.at(0), sensorValues.at(0)));
 	Sensors.AddSensor(Sensor(sensorNames.at(1), sensorValues.at(1)));
 	Sensors.AddSensor(Sensor(sensorNames.at(2), sensorValues.at(2)));
-	Sensors.AddSensor(Sensor(sensorNames.at(3), sensorValues.at(3)));
-
+	//Sensors.AddSensor(Sensor(sensorNames.at(3), sensorValues.at(3)));
+	//there is a sensor missing from the read file, Cyril please fix
+	//then uncomment this line to make sure the addition works
 
 }
 
@@ -79,7 +80,7 @@ SimInfo Humidity::getSim() {
 
 
 	Sim = SimInfo(head, body, conclusion);
-	Sim.PrintSim();
+	//Sim.PrintSim();
 
 	int maxNumOfValues = 10;
 	fluctuatingValueIndex += 1;
