@@ -3,7 +3,9 @@
 #include <string>
 #include "SensorInfo.h"
 #include "simInfo.h"
+
 #include "humidityModule.h"
+#include "Temperature_Module.h"
 
 using namespace std;
 
@@ -12,7 +14,10 @@ void MainMenu();
 void HandleUserInput();
 
 //instance objects of all modules here
+
 Humidity humidityModule = Humidity();
+Temperature temperatureModule = Temperature();
+
 
 int main(void) {
 
@@ -20,6 +25,7 @@ int main(void) {
 	vector<SensorInfo> sensorInformation;
 	//add the sensor info from all the modules to the list
 	sensorInformation.push_back(humidityModule.getSensorInfo());
+	sensorInformation.push_back(temperatureModule.getSensorInfo());
 
 
 
@@ -38,6 +44,9 @@ void MainMenu() {
 		//call each module's getsim and call it's printsim
 		SimInfo humSim = humidityModule.getSim();
 		humSim.PrintSim();
+
+		SimInfo tempSim = temperatureModule.getSim();
+		tempSim.PrintSim();
 
 		//call handle user input
 
@@ -66,7 +75,7 @@ void HandleUserInput() {
 
 	}
 	else if (temp == "sim") {
-		//run sim
+		//run sim, remember about clearing the screen and waiting
 	}
 	else {
 		//its just a regular command
@@ -100,6 +109,9 @@ void HandleUserInput() {
 		if (humidityModule.getSensorInfo().VerifyInput(sensorName, sensorValue)) {
 			//it's valid, modify it
 			humidityModule.ChangeValue(sensorName, sensorValue);
+		}
+		else if (temperatureModule.getSensorInfo().VerifyInput(sensorName, sensorValue)) {
+			temperatureModule.ChangeValue(sensorName, sensorValue);
 		}
 
 		//call change value of correct module if valid, otherwise

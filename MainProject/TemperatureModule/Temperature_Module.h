@@ -25,7 +25,7 @@ private:
 
 	SensorInfo TempSensor;
 
-	void ChangeValue(string, string);
+	
 
 	vector<string> Temperature_Value_Range;
 	vector<string> AirFlow_Value_Range;
@@ -37,6 +37,8 @@ private:
 	const double TempMinExpectedMin = 20;
 
 public:
+
+	void ChangeValue(string, string);
 
 	Temperature();
 	

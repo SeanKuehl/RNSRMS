@@ -2,9 +2,9 @@
 
 #include "Temperature_Module.h"
 
-#define TEMPERATURE_FLUC_FILE "Temperature.txt"
-#define AirFlow_FILE "AirFlow.txt"
-#define WORKLOAD_FILE "WorkLoad.txt"
+#define TEMPERATURE_FLUC_FILE "TemperatureModule/Temperature.txt"
+#define AirFlow_FILE "TemperatureModule/AirFlow.txt"
+#define WORKLOAD_FILE "TemperatureModule/WorkLoad.txt"
 
 using namespace std;
 
