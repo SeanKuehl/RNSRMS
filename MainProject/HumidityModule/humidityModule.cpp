@@ -14,9 +14,8 @@ Humidity::Humidity() {
 	Sensors.AddSensor(Sensor(sensorNames.at(0), sensorValues.at(0)));
 	Sensors.AddSensor(Sensor(sensorNames.at(1), sensorValues.at(1)));
 	Sensors.AddSensor(Sensor(sensorNames.at(2), sensorValues.at(2)));
-	//Sensors.AddSensor(Sensor(sensorNames.at(3), sensorValues.at(3)));
-	//there is a sensor missing from the read file, Cyril please fix
-	//then uncomment this line to make sure the addition works
+	Sensors.AddSensor(Sensor(sensorNames.at(3), sensorValues.at(3)));
+	
 
 }
 
@@ -29,7 +28,7 @@ SimInfo Humidity::getSim() {
 	head.push_back("\n");
 
 	vector<string> body;
-	body.push_back("RAM: " + to_string(getValueRange()) + fluctuatingValueAddon);
+	body.push_back("Relative Humidity: " + to_string(getValueRange()) + fluctuatingValueAddon);
 	body.push_back("\n");
 
 	for (int i = 0; i < sensorNames.size(); i++) {
@@ -69,6 +68,15 @@ SimInfo Humidity::getSim() {
 
 			}
 
+			if (sensorNames.at(i) == "airConditionTemp") {
+				if (stoi(sensorValues.at(i).at(k)) == pressure) {
+					tempString += "*" + sensorValues.at(i).at(k) + "* ";
+				}
+				else {
+					tempString += sensorValues.at(i).at(k) + " ";
+				}
+
+			}
 		}
 		body.push_back(tempString);
 		body.push_back("\n");
@@ -110,6 +118,9 @@ void Humidity::ChangeValue(string sensorName, string sensorValue) {
 	else if (sensorName == "pressure") {
 		pressure = stoi(sensorValue);
 	}
+	else if (sensorName == "airConditionTemp") {
+		pressure = stoi(sensorValue);
+	}
 }
 
 
@@ -135,22 +146,22 @@ void Humidity::getFileValue(string fileName) {
 int Humidity::getValueRange() {
 
 	int fluctuatingValueToShow = fluctuatingValueParts.at(fluctuatingValueIndex);
-	int range = humidity * pressure * fanSpeed ;
+	int range = humidity * pressure * fanSpeed * airConditionTemp ;
 
 	int lowRangeLimit = 1000;
 	int midAndUpperRangeSeperator = 4000;
 
 	if (range < lowRangeLimit) {
 		fluctuatingValueToShow += 20;
-		fluctuatingValueAddon = "MB";
+		fluctuatingValueAddon = "%RH";
 	}
 	else if (range < midAndUpperRangeSeperator) {
-		fluctuatingValueToShow += 900;
-		fluctuatingValueAddon = "MB";
+		fluctuatingValueToShow += 60;
+		fluctuatingValueAddon = "%RH";
 	}
 	else if (range > midAndUpperRangeSeperator) {
-		fluctuatingValueToShow += 0;
-		fluctuatingValueAddon = "GB";
+		fluctuatingValueToShow += 100;
+		fluctuatingValueAddon = "%RH";
 	}
 
 	return fluctuatingValueToShow;

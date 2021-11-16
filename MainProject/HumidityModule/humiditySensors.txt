@@ -10,3 +10,5 @@ x
 pressure
 14.7
 x
+airConditionTemp
+22

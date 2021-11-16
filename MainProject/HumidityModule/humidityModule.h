@@ -39,7 +39,7 @@ private:
 	double fanSpeed = 200.0;	
 	double humidity = 52.2;	
 	double pressure = 16.1;
-		
+	double airConditionTemp = 22.0;
 
 
 
