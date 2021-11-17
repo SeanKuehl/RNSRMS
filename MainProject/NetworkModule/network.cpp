@@ -9,7 +9,7 @@ Network::Network()
 {
 	GetSensorInfoFromFile(SENSOR_FILE);
 }
-
+//Prints Sim info
 SimInfo Network::getSim()
 {
 	string tempString = "";
@@ -32,7 +32,7 @@ SimInfo Network::getSim()
 
 			for (int k = 0; k < deviceConnection.at(j).size(); k++)
 			{
-				if (sectionName.at(j) == "CPU")
+				if (deviceName.at(j) == "CPU")
 				{
 					if (deviceConnection.at(j).at(k) == CPU) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -43,7 +43,7 @@ SimInfo Network::getSim()
 
 				}
 
-				if (sectionName.at(j) == "switches")
+				if (deviceName.at(j) == "switches")
 				{
 					if (deviceConnection.at(j).at(k) == switches) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -54,7 +54,7 @@ SimInfo Network::getSim()
 
 				}
 
-				if (sectionName.at(j) == "router")
+				if (deviceName.at(j) == "router")
 				{
 					if (deviceConnection.at(j).at(k) == router) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -65,7 +65,7 @@ SimInfo Network::getSim()
 
 				}
 
-				if (sectionName.at(j) == "fans")
+				if (deviceName.at(j) == "fans")
 				{
 					if (deviceConnection.at(j).at(k) == fans) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -76,7 +76,7 @@ SimInfo Network::getSim()
 
 				}
 
-				if (sectionName.at(j) == "RAM")
+				if (deviceName.at(j) == "RAM")
 				{
 					if (deviceConnection.at(j).at(k) == RAM) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -87,7 +87,7 @@ SimInfo Network::getSim()
 
 				}
 
-				if (sectionName.at(j) == "laptop1")
+				if (deviceName.at(j) == "laptop1")
 				{
 					if (deviceConnection.at(j).at(k) == connectionType) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -107,7 +107,7 @@ SimInfo Network::getSim()
 					}
 
 				}
-				if (sectionName.at(j) == "PC1")
+				if (deviceName.at(j) == "PC1")
 				{
 					if (deviceConnection.at(j).at(k) == connectionType) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -117,7 +117,7 @@ SimInfo Network::getSim()
 					}
 
 				}
-				if (sectionName.at(j) == "PC2")
+				if (deviceName.at(j) == "PC2")
 				{
 					if (deviceConnection.at(j).at(k) == connectionType) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -127,7 +127,7 @@ SimInfo Network::getSim()
 					}
 
 				}
-				if (sectionName.at(j) == "AdminPC")
+				if (deviceName.at(j) == "AdminPC")
 				{
 					if (deviceConnection.at(j).at(k) == connectionType) {
 						tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
@@ -176,21 +176,21 @@ void Network::ChangeValue(string name, string value)	//i know that the 'value' h
 	}
 	else if (name == "RAM") {
 		RAM = value;
-	}
+	}//all connection types are linked(if one changes all of them do) <-- this is due to time constraint
 	else if (name == "laptop1") {
-		RAM = value;
+		connectionType = value;
 	}
 	else if (name == "laptop2") {
-		RAM = value;
+		connectionType = value;
 	}
 	else if (name == "PC1") {
-		RAM = value;
+		connectionType = value;
 	}
 	else if (name == "PC2") {
-		RAM = value;
+		connectionType = value;
 	}
 	else if (name == "AdminPC") {
-		RAM = value;
+		connectionType = value;
 	}
 
 }
