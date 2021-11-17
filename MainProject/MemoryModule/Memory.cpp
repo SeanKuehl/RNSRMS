@@ -24,6 +24,7 @@ SimInfo Memory::getSim() {
 	string tempString = "";
 
 	vector<string> head;
+	head.push_back("\n");
 	head.push_back("----Memory----");
 	head.push_back("\n");
 

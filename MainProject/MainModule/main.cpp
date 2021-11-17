@@ -41,7 +41,7 @@ void MainMenu() {
 
 
 	while (userInput == "") {
-		cout << "Welcome to RNSRMS, enter a command, 'exit' or 'sim." << endl;
+		cout << "Welcome to RNSRMS, enter a command, 'exit' or 'sim'." << endl;
 
 		//call each module's getsim and call it's printsim
 		SimInfo humSim = humidityModule.getSim();
