@@ -24,6 +24,7 @@ SimInfo Memory::getSim() {
 	string tempString = "";
 
 	vector<string> head;
+	head.push_back("\n");
 	head.push_back("----Memory----");
 	head.push_back("\n");
 
@@ -91,6 +92,7 @@ SimInfo Memory::getSim() {
 
 	vector<string> conclusion;
 	conclusion.push_back("--------------");
+	conclusion.push_back("\n");	//put the command that comes after on it's own line
 
 	
 	mySim = SimInfo(head, body, conclusion);
