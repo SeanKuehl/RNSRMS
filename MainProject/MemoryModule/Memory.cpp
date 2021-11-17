@@ -91,6 +91,7 @@ SimInfo Memory::getSim() {
 
 	vector<string> conclusion;
 	conclusion.push_back("--------------");
+	conclusion.push_back("\n");	//put the command that comes after on it's own line
 
 	
 	mySim = SimInfo(head, body, conclusion);

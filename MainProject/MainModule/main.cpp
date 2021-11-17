@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <stdlib.h>     
+#include <Windows.h>	//for using the function sleep
 #include "SensorInfo.h"
 #include "simInfo.h"
 
@@ -10,6 +12,8 @@
 #include "Memory.h"
 
 using namespace std;
+
+#define SIM_LENGTH 10
 
 void RumSim();
 void MainMenu();
@@ -25,13 +29,7 @@ Temperature temperatureModule = Temperature();
 int main(void) {
 
 	
-	vector<SensorInfo> sensorInformation;
-	//add the sensor info from all the modules to the list
-	sensorInformation.push_back(humidityModule.getSensorInfo());
-	sensorInformation.push_back(temperatureModule.getSensorInfo());
-	sensorInformation.push_back(networkModule.getSensorInfo());
-	sensorInformation.push_back(memoryModule.getSensorInfo());
-
+	
 	MainMenu();
 
 }
@@ -81,14 +79,16 @@ void HandleUserInput() {
 	string sensorValue = "";
 	int howManyTaken = 0;
 
+	cout << "Please enter a command: " << endl;
 	getline(cin, temp);
 
 
 	if (temp == "exit") {
-
+		exit(EXIT_SUCCESS);
 	}
 	else if (temp == "sim") {
 		//run sim, remember about clearing the screen and waiting
+		RumSim();
 	}
 	else {
 		//its just a regular command
@@ -154,4 +154,33 @@ void HandleUserInput() {
 void RumSim() {
 	//call each modules getsim and then it's printsim 10 times,
 	//each time wait a few seconds(maybe) and then clear the screen
+	
+	//clear things on screen before sim
+	system("CLS");	//clear the screen, this is windows only code
+
+	for (int i = 0; i < SIM_LENGTH; i++) {
+		SimInfo humSim = humidityModule.getSim();
+		humSim.PrintSim();
+
+		SimInfo tempSim = temperatureModule.getSim();
+		tempSim.PrintSim();
+
+		SimInfo netSim = networkModule.getSim();
+		netSim.PrintSim();
+
+		SimInfo memSim = memoryModule.getSim();
+		memSim.PrintSim();
+
+		Sleep(2000);
+		system("CLS");	//clear the last sim screen
+
+		
+
+
+	}
+
+	//clear things on screen after sim
+	system("CLS");	//clear the screen, this is windows only code
+
+	
 }
