@@ -30,152 +30,72 @@ SimInfo Network::getSim()
 	body.push_back("Max Bandwidth: " + to_string(currentMaxBand) + " Mbps");
 	body.push_back("\n");
 
-	for (int i = 0; i < sectionName.size(); i++)
-	{
-		tempString += sectionName.at(i) + "\n";
+	for (int i = 0; i < deviceName.size(); i++) {
+		tempString += deviceName.at(i) + ": ";
 
-		for (int j = 0; j < deviceName.size(); j++)
-		{
-			tempString += deviceName.at(j) + ": \n";
-			
-			for (int k = 0; k < deviceConnection.at(j).size(); k++)
-			{
-				if (i == 0) // connections (inner)
-				{
-					if (deviceName.at(j) == "CPU")
-					{
-						if (deviceConnection.at(j).at(k) == CPU)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-
-					if (deviceName.at(j) == "switches")
-					{
-						if (deviceConnection.at(j).at(k) == switches)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-
-					if (deviceName.at(j) == "router")
-					{
-						if (deviceConnection.at(j).at(k) == router)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-
-					if (deviceName.at(j) == "fans")
-					{
-						if (deviceConnection.at(j).at(k) == fans)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-
-					if (deviceName.at(j) == "RAM")
-					{
-						if (deviceConnection.at(j).at(k) == RAM)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
+		for (int k = 0; k < deviceConnection.at(i).size(); k++) {
+			if (deviceName.at(i) == "laptop1") {
+				if (deviceConnection.at(i).at(k) == laptop1) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
 				}
 
-				if (i == 1)//connections (outer)
-				{
-					if (deviceName.at(j) == "laptop1")
-					{
-						if (deviceConnection.at(j).at(k) == connectionType)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-					if (sectionName.at(j) == "laptop2")
-					{
-						if (deviceConnection.at(j).at(k) == connectionType)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-					if (deviceName.at(j) == "PC1")
-					{
-						if (deviceConnection.at(j).at(k) == connectionType)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-					if (deviceName.at(j) == "PC2")
-					{
-						if (deviceConnection.at(j).at(k) == connectionType)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-					if (deviceName.at(j) == "AdminPC")
-					{
-						if (deviceConnection.at(j).at(k) == connectionType)
-						{
-							tempString += "*" + deviceConnection.at(j).at(k) + "* ";	//this indicates that this is the selected value
-						}
-						else
-						{
-							tempString += deviceConnection.at(j).at(k) + " ";
-						}
-
-					}
-				}
 			}
-			body.push_back(tempString);
-			body.push_back("\n");
-			tempString = "";
+
+
+			if (deviceName.at(i) == "laptop2") {
+				if (deviceConnection.at(i).at(k) == laptop2) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+
+			}
+
+
+
+			if (deviceName.at(i) == "PC1") {
+				if (deviceConnection.at(i).at(k) == PC1) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+
+			}
+
+
+			if (deviceName.at(i) == "PC2") {
+				if (deviceConnection.at(i).at(k) == PC2) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+
+			}
+
+			if (deviceName.at(i) == "AdminPC") {
+				if (deviceConnection.at(i).at(k) == AdminPC) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+
+			}
+
+
+
+
+
 		}
+		body.push_back(tempString);
+		body.push_back("\n");
+		tempString = "";
 	}
 
 	vector<string> conclusion;

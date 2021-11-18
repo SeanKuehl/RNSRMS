@@ -26,9 +26,17 @@ private:
 	string fans = "connected";
 	string RAM = "connected";
 
+	string laptop1 = "WIFI";
+	string laptop2 = "WIFI";
+	string PC1 = "WIFI";
+	string PC2 = "WIFI";
+	string AdminPC = "WIFI";
+
+	
+
 	SensorInfo mySensors;
 	SimInfo mySim;
-	vector <string> deviceName;
+	vector<string> deviceName;
 	vector<string> sectionName;
 	vector<vector<string>> deviceConnection;
 	void GetSensorInfoFromFile(string fileName);
