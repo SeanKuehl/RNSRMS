@@ -89,9 +89,6 @@ SimInfo Network::getSim()
 			}
 
 
-
-
-
 		}
 		body.push_back(tempString);
 		body.push_back("\n");
@@ -175,7 +172,6 @@ void Network::calcCurrentSpeed()	//no input needed since values are
 
 void Network::GetSensorInfoFromFile(string fileName) {
 	// Create a text string, which is used to output the text file
-	// Create a text string, which is used to output the text file
 	string myText;
 
 	bool nameNotValue = true;
@@ -202,9 +198,6 @@ void Network::GetSensorInfoFromFile(string fileName) {
 		else if (nameNotValue == false) {
 			tempValues.push_back(myText);
 		}
-
-
-
 
 	}
 
