@@ -156,11 +156,11 @@ int Humidity::getValueRange() {
 		fluctuatingValueAddon = "%RH";
 	}
 	else if (range < midAndUpperRangeSeperator) {
-		fluctuatingValueToShow += 60;
+		fluctuatingValueToShow += 40;
 		fluctuatingValueAddon = "%RH";
 	}
 	else if (range > midAndUpperRangeSeperator) {
-		fluctuatingValueToShow += 100;
+		fluctuatingValueToShow += 60;
 		fluctuatingValueAddon = "%RH";
 	}
 
