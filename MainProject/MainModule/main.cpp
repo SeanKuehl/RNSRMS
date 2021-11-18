@@ -41,7 +41,7 @@ void MainMenu() {
 
 
 	while (userInput == "") {
-		cout << "Welcome to RNSRMS, enter a command, 'exit' or 'sim'." << endl;
+		cout << "Welcome to RNSRMS, enter a command, 'exit' or 'sim' or 'clear'." << endl;
 
 		//call each module's getsim and call it's printsim
 		SimInfo humSim = humidityModule.getSim();
@@ -90,6 +90,9 @@ void HandleUserInput() {
 		//run sim, remember about clearing the screen and waiting
 		RumSim();
 	}
+	else if (temp == "clear") {
+		system("CLS");
+	}
 	else {
 		//its just a regular command
 		temp += " ";	//add a space onto the end so it detects value
@@ -133,7 +136,11 @@ void HandleUserInput() {
 			memoryModule.ChangeValue(sensorName, sensorValue);
 		}
 		else {
-			cout << "Invalid Command" << endl;
+			cout <<  endl;
+			cout << "****************" << endl;
+			cout << "Invalid Command!" << endl;
+			cout << "****************" << endl;
+			cout << endl;
 		}
 
 		//call change value of correct module if valid, otherwise
