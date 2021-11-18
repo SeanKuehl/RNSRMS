@@ -36,10 +36,10 @@ private:
 	vector<int> fluctuatingValueParts;
 	int fluctuatingValueIndex = -1;	
 	string fluctuatingValueAddon = "";
-	double fanSpeed = 200.0;	
-	double humidity = 52.2;	
-	double pressure = 16.1;
-	double airConditionTemp = 22.0;
+	string fanSpeed = "122.3";
+	string humidity = "56.2";	
+	string pressure = "14.1";
+	string airConditionTemp = "22.1";
 
 
 

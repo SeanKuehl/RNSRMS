@@ -9,7 +9,7 @@ Memory::Memory() {
 	GetContentFromFile(FLUCT_VAL_FILE);
 	GetSensorsAndSensorInformationFromFile(SENSOR_FILE);
 
-	//sensors currently has error in it at the moment
+	
 	mySensors.AddSensor(Sensor(sensorNames.at(0), sensorValues.at(0)));
 	mySensors.AddSensor(Sensor(sensorNames.at(1), sensorValues.at(1)));
 	mySensors.AddSensor(Sensor(sensorNames.at(2), sensorValues.at(2)));

@@ -31,12 +31,12 @@ SimInfo Humidity::getSim() {
 	body.push_back("Relative Humidity: " + to_string(getValueRange()) + fluctuatingValueAddon);
 	body.push_back("\n");
 
-	for (int i = 0; i < sensorNames.size(); i++) {
+	for (int i = 0; i < sensorNames.size()-1; i++) {
 		tempString += sensorNames.at(i) + ": ";
 
 		for (int k = 0; k < sensorValues.at(i).size(); k++) {
 			if (sensorNames.at(i) == "fanSpeed") {
-				if (stoi(sensorValues.at(i).at(k)) == fanSpeed) {
+				if (sensorValues.at(i).at(k) == fanSpeed) {
 					tempString += "*" + sensorValues.at(i).at(k) + "* ";
 				}
 				else {
@@ -47,7 +47,7 @@ SimInfo Humidity::getSim() {
 
 
 			if (sensorNames.at(i) == "humidity") {
-				if (stoi(sensorValues.at(i).at(k)) == humidity) {
+				if (sensorValues.at(i).at(k) == humidity) {
 					tempString += "*" + sensorValues.at(i).at(k) + "* ";	
 				}
 				else {
@@ -59,7 +59,7 @@ SimInfo Humidity::getSim() {
 
 
 			if (sensorNames.at(i) == "pressure") {
-				if (stoi(sensorValues.at(i).at(k)) == pressure) {
+				if (sensorValues.at(i).at(k) == pressure) {
 					tempString += "*" + sensorValues.at(i).at(k) + "* ";	
 				}
 				else {
@@ -69,7 +69,7 @@ SimInfo Humidity::getSim() {
 			}
 
 			if (sensorNames.at(i) == "airConditionTemp") {
-				if (stoi(sensorValues.at(i).at(k)) == pressure) {
+				if (sensorValues.at(i).at(k) == airConditionTemp) {
 					tempString += "*" + sensorValues.at(i).at(k) + "* ";
 				}
 				else {
@@ -146,7 +146,7 @@ void Humidity::getFileValue(string fileName) {
 int Humidity::getValueRange() {
 
 	int fluctuatingValueToShow = fluctuatingValueParts.at(fluctuatingValueIndex);
-	int range = humidity * pressure * fanSpeed * airConditionTemp ;
+	int range = stod(humidity) * stod(pressure) * stod(fanSpeed) * stod(airConditionTemp);
 
 	int lowRangeLimit = 1000;
 	int midAndUpperRangeSeperator = 4000;

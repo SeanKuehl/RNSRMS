@@ -1,33 +1,19 @@
-Connections(inner):
-CPU
-connected
-not connected
-switches
-connected
-not connected
-router
-connected
-not connected
-fans
-connected
-not connected
-RAM
-connected
-not connected
-x
-Connections(outer):
 laptop1
 WIFI
 ethernet
+x
 laptop2
 WIFI
 ethernet
+x
 PC1
 WIFI
 ethernet
+x
 PC2
 WIFI
 ethernet
+x
 AdminPC
 WIFI
 ethernet

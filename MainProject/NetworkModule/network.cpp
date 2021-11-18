@@ -8,6 +8,14 @@
 Network::Network()
 {
 	GetSensorInfoFromFile(SENSOR_FILE);
+
+	mySensors.AddSensor(Sensor(deviceName.at(0), deviceConnection.at(0)));
+	mySensors.AddSensor(Sensor(deviceName.at(1), deviceConnection.at(1)));
+	mySensors.AddSensor(Sensor(deviceName.at(2), deviceConnection.at(2)));
+	mySensors.AddSensor(Sensor(deviceName.at(3), deviceConnection.at(3)));
+	mySensors.AddSensor(Sensor(deviceName.at(4), deviceConnection.at(4)));
+
+
 }
 //Prints Sim info
 SimInfo Network::getSim()
@@ -247,10 +255,10 @@ void Network::calcCurrentSpeed()	//no input needed since values are
 
 void Network::GetSensorInfoFromFile(string fileName) {
 	// Create a text string, which is used to output the text file
+	// Create a text string, which is used to output the text file
 	string myText;
 
-	bool isSectionName = true;
-	bool isDeviceName = false;
+	bool nameNotValue = true;
 	vector<string> tempValues;
 
 	// Read from the text file
@@ -261,25 +269,23 @@ void Network::GetSensorInfoFromFile(string fileName) {
 		// Output the text from the file
 
 		if (myText == "x") {
-			isSectionName = true;
-			isDeviceName = false;
+			nameNotValue = true;
 			deviceConnection.push_back(tempValues);
 			tempValues = {};
-			//end of section
+			//skip this one, last one ended
 		}
-		else if (isSectionName) {
-			sectionName.push_back(myText);
-			isSectionName = false;
-			isDeviceName = true;
-		}
-		else if (isDeviceName) {
+
+		else if (nameNotValue) {
 			deviceName.push_back(myText);
-			isDeviceName = false;
+			nameNotValue = false;
 		}
-		else if (isSectionName == false && isDeviceName == false)
-		{
+		else if (nameNotValue == false) {
 			tempValues.push_back(myText);
 		}
+
+
+
+
 	}
 
 	// Close the file
