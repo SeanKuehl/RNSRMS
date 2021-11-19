@@ -20,6 +20,7 @@ private:
 	double currentMaxBand = 80; // <= 10MBps
 	double currentSpeed = 50;	//50Mbps for now
 	string connectionType = "WIFI";	//default connection type will be WIFI (it will only be WIFI for now as i need time to figure out how to include ethernet without changing all the values)
+	
 	string CPU = "connected";
 	string switches = "connected";
 	string router = "connected";
@@ -32,7 +33,8 @@ private:
 	string PC2 = "WIFI";
 	string AdminPC = "WIFI";
 
-	
+	vector<int> fluctuatingValues;
+	int fluctuatingValueIndex = -1;	//-1 so it can't be a valid value by default
 
 	SensorInfo mySensors;
 	SimInfo mySim;
@@ -40,7 +42,8 @@ private:
 	vector<string> sectionName;
 	vector<vector<string>> deviceConnection;
 	void GetSensorInfoFromFile(string fileName);
-	void calcCurrentSpeed();
+	void GetContentFromFile(string fileName);
+	int calcCurrentSpeed();
 
 public:
 	Network();

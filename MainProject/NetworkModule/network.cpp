@@ -1,13 +1,14 @@
 #include "network.h";
-#include <stdlib.h>
-#include <time.h>
 
 #define SENSOR_FILE	 "NetworkModule/NetworkSensors.txt"
+#define FLUCT_VAL_FILE "NetworkModule/fluctValues.txt"
 
 //Initialize Network class
 Network::Network()
 {
 	GetSensorInfoFromFile(SENSOR_FILE);
+	GetContentFromFile(FLUCT_VAL_FILE);
+	fluctuatingValueIndex = 0;
 
 	mySensors.AddSensor(Sensor(deviceName.at(0), deviceConnection.at(0)));
 	mySensors.AddSensor(Sensor(deviceName.at(1), deviceConnection.at(1)));
@@ -29,6 +30,16 @@ SimInfo Network::getSim()
 	vector<string> body;
 	body.push_back("Max Bandwidth: " + to_string(currentMaxBand) + " Mbps");
 	body.push_back("\n");
+	if (connectionType == "WIFI")
+	{
+		body.push_back("Current network speed: " + to_string(calcCurrentSpeed()) + " Mbps");
+		body.push_back("\n");
+	}
+	else if (connectionType == "ethernet")
+	{
+		body.push_back("Current network speed: " + to_string(calcCurrentSpeed()) + " MBps");
+		body.push_back("\n");
+	}
 
 	for (int i = 0; i < deviceName.size(); i++) {
 		tempString += deviceName.at(i) + ": ";
@@ -100,6 +111,17 @@ SimInfo Network::getSim()
 
 	mySim = SimInfo(head, body, conclusion);
 
+	//increment the fluctuating value index for next time
+	int maxNumOfValues = 10;
+	fluctuatingValueIndex += 1;
+	if (fluctuatingValueIndex < maxNumOfValues) {
+		//that's fine
+	}
+	else {
+		fluctuatingValueIndex = 0;
+	}
+
+
 	return mySim;
 }
 
@@ -146,28 +168,45 @@ void Network::ChangeValue(string name, string value)	//i know that the 'value' h
 
 }
 
+//this function will be used to read data from a file for the fluctuating value
+void Network::GetContentFromFile(string fileName) {
+	// Create a text string, which is used to output the text file
+	string myText;
+
+	// Read from the text file
+	ifstream MyReadFile(fileName);
+
+	// Use a while loop together with the getline() function to read the file line by line
+	while (getline(MyReadFile, myText)) {
+		// Output the text from the file
+		fluctuatingValues.push_back(stoi(myText));
+	}
+
+	// Close the file
+	MyReadFile.close();
+}
+
 //Calculate the current network speed
-void Network::calcCurrentSpeed()	//no input needed since values are 
+int Network::calcCurrentSpeed()	//no input needed since values are 
 {
 	/*
 	Note:
 	average WIFI speed = 12 - 25 Mbps
 	average ethernet speed = 45 - 100 MBps
 	*/
-	double tempSpeed = currentSpeed;
+	int valueToShow = fluctuatingValues.at(fluctuatingValueIndex);
 
-	srand(time(0));
 
 	if (connectionType == "WIFI")
 	{
-		tempSpeed = rand() % 13 + 12;	//gives range from 12-24
+		valueToShow += 12; //12 Mbps is the min speed for wifi
 	}
 	else if (connectionType == "ethernet")
 	{
-		tempSpeed = rand() % 440 + 360;	//gives range from 360-799
+		valueToShow = 100 - (valueToShow * 2); //this will read whatever value from the text file and subtract from the max speed(100 MBps)
 	}
 
-	currentSpeed = tempSpeed;
+	return valueToShow;
 }
 
 void Network::GetSensorInfoFromFile(string fileName) {
