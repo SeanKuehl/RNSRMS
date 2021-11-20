@@ -45,6 +45,51 @@ SimInfo Network::getSim()
 		tempString += deviceName.at(i) + ": ";
 
 		for (int k = 0; k < deviceConnection.at(i).size(); k++) {
+			if (deviceName.at(i) == "CPU") {
+				if (deviceConnection.at(i).at(k) == CPU) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+			}
+
+			if (deviceName.at(i) == "switches") {
+				if (deviceConnection.at(i).at(k) == switches) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+			}
+
+			if (deviceName.at(i) == "routers") {
+				if (deviceConnection.at(i).at(k) == routers) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+			}
+
+			if (deviceName.at(i) == "RAM") {
+				if (deviceConnection.at(i).at(k) == RAM) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+			}
+
+			if (deviceName.at(i) == "fans") {
+				if (deviceConnection.at(i).at(k) == fans) {
+					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
+				}
+				else {
+					tempString += deviceConnection.at(i).at(k) + " ";
+				}
+			}
+
 			if (deviceName.at(i) == "laptop1") {
 				if (deviceConnection.at(i).at(k) == laptop1) {
 					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
@@ -52,9 +97,7 @@ SimInfo Network::getSim()
 				else {
 					tempString += deviceConnection.at(i).at(k) + " ";
 				}
-
 			}
-
 
 			if (deviceName.at(i) == "laptop2") {
 				if (deviceConnection.at(i).at(k) == laptop2) {
@@ -63,10 +106,7 @@ SimInfo Network::getSim()
 				else {
 					tempString += deviceConnection.at(i).at(k) + " ";
 				}
-
 			}
-
-
 
 			if (deviceName.at(i) == "PC1") {
 				if (deviceConnection.at(i).at(k) == PC1) {
@@ -75,9 +115,7 @@ SimInfo Network::getSim()
 				else {
 					tempString += deviceConnection.at(i).at(k) + " ";
 				}
-
 			}
-
 
 			if (deviceName.at(i) == "PC2") {
 				if (deviceConnection.at(i).at(k) == PC2) {
@@ -86,7 +124,6 @@ SimInfo Network::getSim()
 				else {
 					tempString += deviceConnection.at(i).at(k) + " ";
 				}
-
 			}
 
 			if (deviceName.at(i) == "AdminPC") {
@@ -96,9 +133,7 @@ SimInfo Network::getSim()
 				else {
 					tempString += deviceConnection.at(i).at(k) + " ";
 				}
-
 			}
-
 
 		}
 		body.push_back(tempString);
@@ -142,7 +177,7 @@ void Network::ChangeValue(string name, string value)	//i know that the 'value' h
 		switches = value;
 	}
 	else if (name == "router") {
-		router = value;
+		routers = value;
 	}
 	else if (name == "fans") {
 		fans = value;

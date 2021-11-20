@@ -23,7 +23,7 @@ private:
 	
 	string CPU = "connected";
 	string switches = "connected";
-	string router = "connected";
+	string routers = "connected";
 	string fans = "connected";
 	string RAM = "connected";
 
