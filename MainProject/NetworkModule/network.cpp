@@ -184,21 +184,21 @@ void Network::ChangeValue(string name, string value)	//i know that the 'value' h
 	}
 	else if (name == "RAM") {
 		RAM = value;
-	}//all connection types are linked(if one changes all of them do) <-- this is due to time constraint
+	}
 	else if (name == "laptop1") {
-		connectionType = value;
+		laptop1 = value;
 	}
 	else if (name == "laptop2") {
-		connectionType = value;
+		laptop2 = value;
 	}
 	else if (name == "PC1") {
-		connectionType = value;
+		PC1 = value;
 	}
 	else if (name == "PC2") {
-		connectionType = value;
+		PC2 = value;
 	}
 	else if (name == "AdminPC") {
-		connectionType = value;
+		AdminPC = value;
 	}
 
 }

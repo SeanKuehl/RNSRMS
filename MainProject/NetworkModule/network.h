@@ -19,7 +19,6 @@ private:
 	double minBandwidth = 12; // min of WIFI (which is lowest it can go)
 	double currentMaxBand = 80; // <= 10MBps
 	double currentSpeed = 50;	//50Mbps for now
-	string connectionType = "WIFI";	//default connection type will be WIFI (it will only be WIFI for now as i need time to figure out how to include ethernet without changing all the values)
 	
 	string CPU = "connected";
 	string switches = "connected";
