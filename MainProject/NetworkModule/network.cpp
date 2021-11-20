@@ -186,19 +186,19 @@ void Network::ChangeValue(string name, string value)	//i know that the 'value' h
 		RAM = value;
 	}
 	else if (name == "laptop1") {
-		laptop1 = value;
+		connectionType = value;
 	}
 	else if (name == "laptop2") {
-		laptop2 = value;
+		connectionType = value;
 	}
 	else if (name == "PC1") {
-		PC1 = value;
+		connectionType = value;
 	}
 	else if (name == "PC2") {
-		PC2 = value;
+		connectionType = value;
 	}
 	else if (name == "AdminPC") {
-		AdminPC = value;
+		connectionType = value;
 	}
 
 }

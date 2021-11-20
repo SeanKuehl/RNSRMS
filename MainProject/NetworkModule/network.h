@@ -19,6 +19,7 @@ private:
 	double minBandwidth = 12; // min of WIFI (which is lowest it can go)
 	double currentMaxBand = 80; // <= 10MBps
 	double currentSpeed = 50;	//50Mbps for now
+	string connectionType = "WIFI";
 	
 	string CPU = "connected";
 	string switches = "connected";
