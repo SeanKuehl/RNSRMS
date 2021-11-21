@@ -50,7 +50,7 @@ SimInfo Temperature::getSim() {
 	Body.push_back("Temperature: " + to_string(Temperature_Value) + "C");
 	Body.push_back("\n");
 
-	Body.push_back("WorkLoad: ");
+	Body.push_back("workload: ");
 	for (int i = 0; i < TempSensorValues.at(0).size(); i++) {
 		if (i == WorkLoad_Value_Index) {
 			Body.push_back(" *" + to_string(WorkLoad_Value) + "*");
@@ -61,7 +61,7 @@ SimInfo Temperature::getSim() {
 	}
 	Body.push_back("\n");
 
-	Body.push_back("AirFlow:  ");
+	Body.push_back("airflow:  ");
 	for (int i = 0; i < TempSensorValues.at(1).size(); i++) {
 		if (i == AirFlow_Value_Index) {
 			Body.push_back(" *" + to_string(AirFlow_Value) + "*");
@@ -72,7 +72,7 @@ SimInfo Temperature::getSim() {
 	}
 	Body.push_back("\n");
 
-	Body.push_back("ActiveFans: ");
+	Body.push_back("activefans: ");
 	for (int i = 0; i < TempSensorValues.at(2).size(); i++) {
 		if (i == ActiveFans_Value_Index) {
 			Body.push_back(" *" + to_string(ActiveFans_Value) + "*");
@@ -83,7 +83,7 @@ SimInfo Temperature::getSim() {
 	}
 	Body.push_back("\n");
 
-	Body.push_back("FanSpeed: ");
+	Body.push_back("fanspeed: ");
 	for (int i = 0; i < TempSensorValues.at(3).size(); i++) {
 		if (i == FanSpeed_Value_Index) {
 			Body.push_back(" *" + to_string(FanSpeed_Value) + "*");
