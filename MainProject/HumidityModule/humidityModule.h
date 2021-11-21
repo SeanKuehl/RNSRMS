@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 #include "module_interface.h"
 
@@ -36,10 +35,10 @@ private:
 	vector<int> fluctuatingValueParts;
 	int fluctuatingValueIndex = -1;	
 	string fluctuatingValueAddon = "";
-	string fanSpeed = "122.3";
+	string fanspeed = "122.3";
 	string humidity = "56.2";	
 	string pressure = "14.1";
-	string airConditionTemp = "22.1";
+	string airconditiontemp = "22.1";
 
 
 

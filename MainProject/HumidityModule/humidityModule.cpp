@@ -31,12 +31,12 @@ SimInfo Humidity::getSim() {
 	body.push_back("Relative Humidity: " + to_string(getValueRange()) + fluctuatingValueAddon);
 	body.push_back("\n");
 
-	for (int i = 0; i < sensorNames.size()-1; i++) {
+	for (int i = 0; i < sensorNames.size(); i++) {
 		tempString += sensorNames.at(i) + ": ";
 
 		for (int k = 0; k < sensorValues.at(i).size(); k++) {
-			if (sensorNames.at(i) == "fanSpeed") {
-				if (sensorValues.at(i).at(k) == fanSpeed) {
+			if (sensorNames.at(i) == "fanspeed") {
+				if (sensorValues.at(i).at(k) == fanspeed) {
 					tempString += "*" + sensorValues.at(i).at(k) + "* ";
 				}
 				else {
@@ -68,8 +68,8 @@ SimInfo Humidity::getSim() {
 
 			}
 
-			if (sensorNames.at(i) == "airConditionTemp") {
-				if (sensorValues.at(i).at(k) == airConditionTemp) {
+			if (sensorNames.at(i) == "airconditiontemp") {
+				if (sensorValues.at(i).at(k) == airconditiontemp) {
 					tempString += "*" + sensorValues.at(i).at(k) + "* ";
 				}
 				else {
@@ -109,8 +109,8 @@ SensorInfo Humidity::getSensorInfo() {
 void Humidity::ChangeValue(string sensorName, string sensorValue) {
 
 
-	if (sensorName == "fanSpeed") {
-		fanSpeed = stoi(sensorValue);
+	if (sensorName == "fanspeed") {
+		fanspeed = stoi(sensorValue);
 	}
 	else if (sensorName == "humidity") {
 		humidity = stoi(sensorValue);
@@ -118,7 +118,7 @@ void Humidity::ChangeValue(string sensorName, string sensorValue) {
 	else if (sensorName == "pressure") {
 		pressure = stoi(sensorValue);
 	}
-	else if (sensorName == "airConditionTemp") {
+	else if (sensorName == "airconditiontemp") {
 		pressure = stoi(sensorValue);
 	}
 }
@@ -146,7 +146,7 @@ void Humidity::getFileValue(string fileName) {
 int Humidity::getValueRange() {
 
 	int fluctuatingValueToShow = fluctuatingValueParts.at(fluctuatingValueIndex);
-	int range = stod(humidity) * stod(pressure) * stod(fanSpeed) * stod(airConditionTemp);
+	int range = stod(humidity) * stod(pressure) * stod(fanspeed) * stod(airconditiontemp);
 
 	int lowRangeLimit = 1000;
 	int midAndUpperRangeSeperator = 4000;
