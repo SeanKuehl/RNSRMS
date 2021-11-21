@@ -3,7 +3,9 @@
 #include "module_interface.h"
 
 #include <iostream>
+#include <vector>
 #include <fstream>
+#include <windows.h>
 
 using namespace std;
 
@@ -12,24 +14,25 @@ using namespace std;
 class Temperature : public module_interface {
 
 private:
-	float Temperature_Value;
-	float AirFlow_Value;
+	SimInfo TempSim;
+	SensorInfo TempSensor;
+	
+	vector<string> TempSensorNames;
+	vector<vector<string>> TempSensorValues;
+
+	int Temperature_Value;
+	int AirFlow_Value;
 	int WorkLoad_Value;
-	int FanSpeed;
+	int FanSpeed_Value;
+	int ActiveFans_Value;
 
 	int Temperature_Value_Index;
-
-	bool Auto;
-
-	SimInfo TempSim;
-
-	SensorInfo TempSensor;
-
-	
+	int AirFlow_Value_Index;
+	int WorkLoad_Value_Index;
+	int FanSpeed_Value_Index;
+	int ActiveFans_Value_Index;
 
 	vector<string> Temperature_Value_Range;
-	vector<string> AirFlow_Value_Range;
-	vector<string> Workload_Value_Range;
 
 	const float TempMaxThreshold = 24;
 	const float TempMinThreshold = 16;
@@ -46,21 +49,13 @@ public:
 
 	SensorInfo getSensorInfo();
 
-	void AutoAdjust();
-
 	void TemperatureSensor();
 
 	void Calculate();
 
 	vector<string> ReadFile(string);
 
-	void WorkLoadSensor();
-
-	void AirFlowSensor();
-
-	void ChangeSpeed(int Speed);
-
-	void ManualAdjust(int Speed);
+	void ReadFileSensors(string);
 };
 
 

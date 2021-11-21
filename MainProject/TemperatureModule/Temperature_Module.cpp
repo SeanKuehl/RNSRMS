@@ -3,8 +3,10 @@
 #include "Temperature_Module.h"
 
 #define TEMPERATURE_FLUC_FILE "TemperatureModule/Temperature.txt"
-#define AirFlow_FILE "TemperatureModule/AirFlow.txt"
+#define AIRFLOW_FILE "TemperatureModule/AirFlow.txt"
 #define WORKLOAD_FILE "TemperatureModule/WorkLoad.txt"
+#define ACTIVEFANS_FILE "TemperatureModule/ActiveFans.txt"
+#define FANSPEED_FILE "TemperatureModule/FanSpeed.txt"
 
 using namespace std;
 
@@ -12,14 +14,28 @@ using namespace std;
 Temperature::Temperature()
 {
 	Temperature_Value_Range = ReadFile(TEMPERATURE_FLUC_FILE);
-	Workload_Value_Range = ReadFile(WORKLOAD_FILE);
-	AirFlow_Value_Range = ReadFile(AirFlow_FILE);
+	TempSensorNames.push_back("workload");
+	ReadFileSensors(WORKLOAD_FILE);
+	TempSensorNames.push_back("airflow");
+	ReadFileSensors(AIRFLOW_FILE);
+	TempSensorNames.push_back("activefans");
+	ReadFileSensors(ACTIVEFANS_FILE);
+	TempSensorNames.push_back("fanspeed");
+	ReadFileSensors(FANSPEED_FILE);
+
 
 	Temperature_Value_Index = 0;
-	Auto = true;
-
+	WorkLoad_Value_Index = 3;
+	AirFlow_Value_Index = 2;
+	ActiveFans_Value_Index = 2;
+	FanSpeed_Value_Index = 3;
 
 	Calculate();
+
+	TempSensor.AddSensor(Sensor(TempSensorNames.at(0), TempSensorValues.at(0)));
+	TempSensor.AddSensor(Sensor(TempSensorNames.at(1), TempSensorValues.at(1)));
+	TempSensor.AddSensor(Sensor(TempSensorNames.at(2), TempSensorValues.at(2)));
+	TempSensor.AddSensor(Sensor(TempSensorNames.at(3), TempSensorValues.at(3)));
 }
 
 SimInfo Temperature::getSim() {
@@ -31,17 +47,54 @@ SimInfo Temperature::getSim() {
 	Head.push_back("--------------- Temperature ---------------");
 	Head.push_back("\n");
 	Calculate();
-	Body.push_back("Temperature: " + to_string(Temperature_Value) + "°C");
+	Body.push_back("Temperature: " + to_string(Temperature_Value) + "C");
 	Body.push_back("\n");
 
-	Body.push_back("WorkLoad: " + to_string(WorkLoad_Value) + "%");
-	Body.push_back("\n");
-	Body.push_back("AirFlow: " + to_string(AirFlow_Value) + "CFM");
-	Body.push_back("\n");
-	Body.push_back("Fan Speed: " + to_string(FanSpeed) + "%");
+	Body.push_back("WorkLoad: ");
+	for (int i = 0; i < TempSensorValues.at(0).size(); i++) {
+		if (i == WorkLoad_Value_Index) {
+			Body.push_back(" *" + to_string(WorkLoad_Value) + "*");
+		}
+		else {
+			Body.push_back(" " + to_string(stoi(TempSensorValues.at(0).at(i))));
+		}
+	}
 	Body.push_back("\n");
 
-	Conclusion.push_back("--------------- Temperature ---------------");
+	Body.push_back("AirFlow:  ");
+	for (int i = 0; i < TempSensorValues.at(1).size(); i++) {
+		if (i == AirFlow_Value_Index) {
+			Body.push_back(" *" + to_string(AirFlow_Value) + "*");
+		}
+		else {
+			Body.push_back(" " + to_string(stoi(TempSensorValues.at(1).at(i))));
+		}
+	}
+	Body.push_back("\n");
+
+	Body.push_back("ActiveFans: ");
+	for (int i = 0; i < TempSensorValues.at(2).size(); i++) {
+		if (i == ActiveFans_Value_Index) {
+			Body.push_back(" *" + to_string(ActiveFans_Value) + "*");
+		}
+		else {
+			Body.push_back(" " + to_string(stoi(TempSensorValues.at(2).at(i))));
+		}
+	}
+	Body.push_back("\n");
+
+	Body.push_back("FanSpeed: ");
+	for (int i = 0; i < TempSensorValues.at(3).size(); i++) {
+		if (i == FanSpeed_Value_Index) {
+			Body.push_back(" *" + to_string(FanSpeed_Value) + "*");
+		}
+		else {
+			Body.push_back(" " + to_string(stoi(TempSensorValues.at(3).at(i))));
+		}
+	}
+	Body.push_back("\n");
+
+	Conclusion.push_back("---------------------------------------------");
 	Conclusion.push_back("\n");
 
 	TempSim = SimInfo(Head, Body, Conclusion);
@@ -53,32 +106,45 @@ SensorInfo Temperature::getSensorInfo() {
 	return TempSensor;
 }
 
-void Temperature::ChangeValue(string Target, string Replacement) {
-	Target = Replacement;
-}
+void Temperature::ChangeValue(string TargetSensor, string NewValue) {
 
-// This function auto adjust the fan speed for the user based off of the current temperature and if the fan needs to be running to support it.
-void Temperature::AutoAdjust() {
-	FanSpeed = 0;
+	string Temp = TargetSensor;
 
-	if (Temperature_Value >= TempMaxThreshold) {
+	transform(Temp.begin(), Temp.end(), Temp.begin(), ::tolower);
 
-		float Temp = Temperature_Value - TempMaxThreshold;
-		FanSpeed += Temp*10;
-
-		if (FanSpeed > 100) {
-
-			FanSpeed = 100;
+	if (Temp == "workload") {
+		for (int i = 0; i < TempSensorValues.at(0).size(); i++) {
+			if (TempSensorValues.at(0).at(i) == NewValue) {
+				WorkLoad_Value_Index = i;
+			}
+		}
+	}
+	else if (Temp == "airflow") {
+		for (int i = 0; i < TempSensorValues.at(1).size(); i++) {
+			if (TempSensorValues.at(1).at(i) == NewValue) {
+				AirFlow_Value_Index = i;
+			}
+		}
+	}
+	else if (Temp == "activefans") {
+		for (int i = 0; i < TempSensorValues.at(2).size(); i++) {
+			if (TempSensorValues.at(2).at(i) == NewValue) {
+				ActiveFans_Value_Index = i;
+			}
+		}
+	}
+	else if (Temp == "fanspeed") {
+		for (int i = 0; i < TempSensorValues.at(3).size(); i++) {
+			if (TempSensorValues.at(3).at(i) == NewValue) {
+				FanSpeed_Value_Index = i;
+			}
 		}
 	}
 }
 
-// Detects the current Base Temperature before calculating the additional Enviromental Factors
 void Temperature::TemperatureSensor() {
-	//if ((rand() % 100) == 99) {
 
-		Temperature_Value_Index += 1;
-	//}
+	Temperature_Value_Index += 1;
 
 	if (Temperature_Value_Index > 9) {
 
@@ -93,20 +159,16 @@ void Temperature::Calculate() {
 
 	TemperatureSensor();
 
-	WorkLoadSensor();
+	WorkLoad_Value = stoi(TempSensorValues.at(0).at(WorkLoad_Value_Index));
+	AirFlow_Value = stoi(TempSensorValues.at(1).at(AirFlow_Value_Index));
+	ActiveFans_Value = stoi(TempSensorValues.at(2).at(ActiveFans_Value_Index));
+	FanSpeed_Value = stoi(TempSensorValues.at(3).at(FanSpeed_Value_Index));
 
 	Temperature_Value += (WorkLoad_Value / 10);
 
-	if (Auto == true) {
+	AirFlow_Value = ((AirFlow_Value / 100) * FanSpeed_Value * ActiveFans_Value);
 
-		AutoAdjust();
-	}
-
-	AirFlowSensor();
-
-	AirFlow_Value = ((AirFlow_Value / 100) * FanSpeed);
-
-	Temperature_Value -= (AirFlow_Value/100);
+	Temperature_Value -= (AirFlow_Value/300);
 
 }
 
@@ -129,27 +191,21 @@ vector<string> Temperature::ReadFile(string FileName) {
 	return FileData;
 }
 
-void Temperature::WorkLoadSensor() {
+void Temperature::ReadFileSensors(string FileName) {
 
-	//if ((rand() % 100) == 99) {
+	vector<string> FileData;
 
-	WorkLoad_Value = stoi(Workload_Value_Range.at((rand() % 10)));
-	//}
-}
+	string FileLine;
 
-void Temperature::AirFlowSensor() {
+	ifstream FileReader(FileName);
 
-	//if ((rand() % 100) == 99) {
+	while (getline(FileReader, FileLine)) {
 
-		AirFlow_Value = stoi(AirFlow_Value_Range.at(rand() % 10));
-	//}
-}
+		FileData.push_back(FileLine);
 
-void Temperature::ChangeSpeed(int Speed) {
+	}
 
-	FanSpeed = Speed;
-}
+	FileReader.close();
 
-void Temperature::ManualAdjust(int Speed) {
-	// Integration with the Main Module Needed for this
+	TempSensorValues.push_back(FileData);
 }
