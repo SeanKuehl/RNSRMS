@@ -19,19 +19,19 @@ private:
 	double minBandwidth = 12; // min of WIFI (which is lowest it can go)
 	double currentMaxBand = 80; // <= 10MBps
 	double currentSpeed = 50;	//50Mbps for now
-	string connectionType = "WIFI";
+	string connectionType = "wifi";
 	
-	string CPU = "connected";
+	string cpus = "connected";
 	string switches = "connected";
 	string routers = "connected";
 	string fans = "connected";
-	string RAM = "connected";
+	string ram = "connected";
 
-	string laptop1 = "WIFI";
-	string laptop2 = "WIFI";
-	string PC1 = "WIFI";
-	string PC2 = "WIFI";
-	string AdminPC = "WIFI";
+	string laptop1 = "wifi";
+	string laptop2 = "wifi";
+	string pc1 = "wifi";
+	string pc2 = "wifi";
+	string adminpc = "wifi";
 
 	vector<int> fluctuatingValues;
 	int fluctuatingValueIndex = -1;	//-1 so it can't be a valid value by default

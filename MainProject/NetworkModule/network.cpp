@@ -15,6 +15,11 @@ Network::Network()
 	mySensors.AddSensor(Sensor(deviceName.at(2), deviceConnection.at(2)));
 	mySensors.AddSensor(Sensor(deviceName.at(3), deviceConnection.at(3)));
 	mySensors.AddSensor(Sensor(deviceName.at(4), deviceConnection.at(4)));
+	mySensors.AddSensor(Sensor(deviceName.at(5), deviceConnection.at(5)));
+	mySensors.AddSensor(Sensor(deviceName.at(6), deviceConnection.at(6)));
+	mySensors.AddSensor(Sensor(deviceName.at(7), deviceConnection.at(7)));
+	mySensors.AddSensor(Sensor(deviceName.at(8), deviceConnection.at(8)));
+	mySensors.AddSensor(Sensor(deviceName.at(9), deviceConnection.at(9)));
 
 
 }
@@ -28,9 +33,7 @@ SimInfo Network::getSim()
 	head.push_back("\n");
 
 	vector<string> body;
-	body.push_back("Max Bandwidth: " + to_string(currentMaxBand) + " Mbps");
-	body.push_back("\n");
-	if (connectionType == "WIFI")
+	if (connectionType == "wifi")
 	{
 		body.push_back("Current network speed: " + to_string(calcCurrentSpeed()) + " Mbps");
 		body.push_back("\n");
@@ -45,8 +48,8 @@ SimInfo Network::getSim()
 		tempString += deviceName.at(i) + ": ";
 
 		for (int k = 0; k < deviceConnection.at(i).size(); k++) {
-			if (deviceName.at(i) == "CPU") {
-				if (deviceConnection.at(i).at(k) == CPU) {
+			if (deviceName.at(i) == "cpus") {
+				if (deviceConnection.at(i).at(k) == cpus) {
 					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
 				}
 				else {
@@ -72,8 +75,8 @@ SimInfo Network::getSim()
 				}
 			}
 
-			if (deviceName.at(i) == "RAM") {
-				if (deviceConnection.at(i).at(k) == RAM) {
+			if (deviceName.at(i) == "ram") {
+				if (deviceConnection.at(i).at(k) == ram) {
 					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
 				}
 				else {
@@ -91,7 +94,7 @@ SimInfo Network::getSim()
 			}
 
 			if (deviceName.at(i) == "laptop1") {
-				if (deviceConnection.at(i).at(k) == laptop1) {
+				if (deviceConnection.at(i).at(k) == connectionType) {
 					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
 				}
 				else {
@@ -100,7 +103,7 @@ SimInfo Network::getSim()
 			}
 
 			if (deviceName.at(i) == "laptop2") {
-				if (deviceConnection.at(i).at(k) == laptop2) {
+				if (deviceConnection.at(i).at(k) == connectionType) {
 					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
 				}
 				else {
@@ -108,8 +111,8 @@ SimInfo Network::getSim()
 				}
 			}
 
-			if (deviceName.at(i) == "PC1") {
-				if (deviceConnection.at(i).at(k) == PC1) {
+			if (deviceName.at(i) == "pc1") {
+				if (deviceConnection.at(i).at(k) == connectionType) {
 					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
 				}
 				else {
@@ -117,8 +120,8 @@ SimInfo Network::getSim()
 				}
 			}
 
-			if (deviceName.at(i) == "PC2") {
-				if (deviceConnection.at(i).at(k) == PC2) {
+			if (deviceName.at(i) == "pc2") {
+				if (deviceConnection.at(i).at(k) == connectionType) {
 					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
 				}
 				else {
@@ -126,8 +129,8 @@ SimInfo Network::getSim()
 				}
 			}
 
-			if (deviceName.at(i) == "AdminPC") {
-				if (deviceConnection.at(i).at(k) == AdminPC) {
+			if (deviceName.at(i) == "adminpc") {
+				if (deviceConnection.at(i).at(k) == connectionType) {
 					tempString += "*" + deviceConnection.at(i).at(k) + "* ";	//this indicates that this is the selected value
 				}
 				else {
@@ -167,11 +170,8 @@ SensorInfo Network::getSensorInfo()
 
 void Network::ChangeValue(string name, string value)	//i know that the 'value' has to be valid because of validation
 {
-	if (name == "bandwidth") {
-		 currentMaxBand= stoi(value);
-	}
-	else if (name == "CPU") {
-		CPU = value;
+	if (name == "cpus") {
+		cpus = value;
 	}
 	else if (name == "switches") {
 		switches = value;
@@ -182,8 +182,8 @@ void Network::ChangeValue(string name, string value)	//i know that the 'value' h
 	else if (name == "fans") {
 		fans = value;
 	}
-	else if (name == "RAM") {
-		RAM = value;
+	else if (name == "ram") {
+		ram = value;
 	}
 	else if (name == "laptop1") {
 		connectionType = value;
@@ -191,13 +191,13 @@ void Network::ChangeValue(string name, string value)	//i know that the 'value' h
 	else if (name == "laptop2") {
 		connectionType = value;
 	}
-	else if (name == "PC1") {
+	else if (name == "pc1") {
 		connectionType = value;
 	}
-	else if (name == "PC2") {
+	else if (name == "pc2") {
 		connectionType = value;
 	}
-	else if (name == "AdminPC") {
+	else if (name == "adminpc") {
 		connectionType = value;
 	}
 
@@ -232,7 +232,7 @@ int Network::calcCurrentSpeed()	//no input needed since values are
 	int valueToShow = fluctuatingValues.at(fluctuatingValueIndex);
 
 
-	if (connectionType == "WIFI")
+	if (connectionType == "wifi")
 	{
 		valueToShow += 12; //12 Mbps is the min speed for wifi
 	}
