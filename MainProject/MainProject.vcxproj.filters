@@ -90,5 +90,8 @@
     <Text Include="NetworkModule\NetworkSensors.txt" />
     <Text Include="MemoryModule\MemoryFluctuatingValue.txt" />
     <Text Include="MemoryModule\MemorySensors.txt" />
+    <Text Include="NetworkModule\fluctValues.txt" />
+    <Text Include="TemperatureModule\ActiveFans.txt" />
+    <Text Include="TemperatureModule\FanSpeed.txt" />
   </ItemGroup>
 </Project>
