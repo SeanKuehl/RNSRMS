@@ -15,7 +15,7 @@ private:
 public:
 	Sensor(string names, vector<string> value) {
 		int i = 0;
-		char c;
+		
 
 		transform(names.begin(), names.end(), names.begin(), [](unsigned char c) { return tolower(c); });
 

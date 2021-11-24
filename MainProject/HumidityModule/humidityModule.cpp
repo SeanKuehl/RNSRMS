@@ -110,16 +110,16 @@ void Humidity::ChangeValue(string sensorName, string sensorValue) {
 
 
 	if (sensorName == "fanspeed") {
-		fanspeed = stoi(sensorValue);
+		fanspeed = sensorValue;
 	}
 	else if (sensorName == "humidity") {
-		humidity = stoi(sensorValue);
+		humidity = sensorValue;
 	}
 	else if (sensorName == "pressure") {
-		pressure = stoi(sensorValue);
+		pressure = sensorValue;
 	}
 	else if (sensorName == "airconditiontemp") {
-		pressure = stoi(sensorValue);
+		airconditiontemp = sensorValue;
 	}
 }
 
